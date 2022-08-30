@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loan Diversity Checker</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/a5eaa37463.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+    <div class="space-y-8">
+      <div
+        class="flex items-center justify-between p-4 bg-gradient-to-r from-cyan-500 to-green-500"
+      >
+        <p class="ml-6 text-3xl font-bold text-white uppercase md:ml-24">
+          Diversity Validator
+        </p>
+        <button
+          id="resetBtn"
+          class="p-2 px-6 text-center text-white bg-red-500 rounded-full w-92 hover:-translate-x-1"
+        >
+          Reset
+        </button>
+      </div>
+      <div
+        class="flex flex-col items-center justify-between px-6 border-2 rounded shadow-2xl md:px-8 md:flex-row md:max-w-6xl md:mx-auto"
+      >
+        <div class="px-4 py-4 space-y-4">
+          <div
+            class="p-6 space-x-4 text-left text-center text-white bg-black border rounded"
+          >
+            Diversity Grade:
+            <h3 class="text-2xl" id="screenValue">-</h3>
+          </div>
+          <input
+            id="input1"
+            type="number"
+            class="w-full p-4 space-x-4 text-left border rounded border-zinc-400 hover:bg-gray-100"
+            placeholder="Enter total number of accounts"
+          />
+          <input
+            id="input2"
+            type="number"
+            class="w-full p-4 space-x-4 text-left border rounded border-zinc-400 hover:bg-gray-100"
+            placeholder="Enter loan type count"
+          />
+          <button
+            id="btn"
+            class="p-6 space-x-4 text-center text-white bg-teal-800 w-92 hover:-translate-y-1"
+          >
+            Check diversity grade
+            <span class="space-x-4 fa-solid fa-arrow-up-long"></span>
+          </button>
+
+          <div class="max-w-full px-4 py-4 my-8 space-y-4 border-2 rounded-lg">
+            <h3 class="text-center text-white bg-black rounded">
+              Account Diversity Grade Logic
+            </h3>
+            <div class="flex flex-row items-center justify-between space-x-4">
+              <p>1. If total totalAccounts > 20 or loanTypeCount = 4</p>
+              <div class="px-2 text-center bg-green-200 rounded border-1">
+                Grade A
+              </div>
+            </div>
+            <div class="flex flex-row items-center justify-between space-x-4">
+              <p>2. If total totalAccounts > 10 or loanTypeCount = 3</p>
+              <div class="px-2 text-center bg-blue-200 rounded border-1">
+                Grade B
+              </div>
+            </div>
+            <div class="flex flex-row items-center justify-between space-x-4">
+              <p>3. If total totalAccounts > 5 or loanTypeCount = 2</p>
+              <div class="px-2 text-center bg-red-200 rounded border-1">
+                Grade C
+              </div>
+            </div>
+            <div class="flex flex-row items-center justify-between space-x-4">
+              <p>4. If total totalAccounts > 0 or loanTypeCount = 1</p>
+              <div class="px-2 text-center bg-purple-200 rounded border-1">
+                Grade D
+              </div>
+            </div>
+            <div class="flex flex-row items-center justify-between space-x-4">
+              <p>5. Else</p>
+              <div class="px-2 text-center bg-yellow-200 rounded border-1">
+                Grade N/A
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="max-w-full px-4 py-4 my-8 space-y-4 border-2 rounded-lg">
+          <h3 class="text-center text-white bg-black rounded">
+            Account Diversity Grade Logic Deductions (9 Cases)
+          </h3>
+          <div class="flex flex-row items-center justify-between space-x-4">
+            <p>1. If total totalAccounts > 20 and loanTypeCount = 4.</p>
+            <div class="px-2 text-center bg-green-200 rounded border-1">
+              Grade A
+            </div>
+          </div>
+          <div class="flex flex-row items-center justify-between space-x-4">
+            <p>2. If total totalAccounts < 20 and loanTypeCount = 4.</p>
+            <div class="px-2 text-center bg-green-200 rounded border-1">
+              Grade A
+            </div>
+          </div>
+          <div class="flex flex-row items-center justify-between space-x-4">
+            <p>3. If total totalAccounts > 10 and loanTypeCount = 3</p>
+            <div class="px-2 text-center bg-blue-200 rounded border-1">
+              Grade B
+            </div>
+          </div>
+          <div class="flex flex-row items-center justify-between space-x-4">
+            <p>4. If total totalAccounts < 10 and loanTypeCount = 3</p>
+            <div class="px-2 text-center bg-blue-200 rounded border-1">
+              Grade B
+            </div>
+          </div>
+          <div class="flex flex-row items-center justify-between space-x-4">
+            <p>5. If total totalAccounts = 5 and loanTypeCount = 2</p>
+            <div class="px-2 text-center bg-red-200 rounded border-1">
+              Grade C
+            </div>
+          </div>
+          <div class="flex flex-row items-center justify-between space-x-4">
+            <p>6. If total totalAccounts < 5 and loanTypeCount = 2</p>
+            <div class="px-2 text-center bg-red-200 rounded border-1">
+              Grade C
+            </div>
+          </div>
+          <div class="flex flex-row items-center justify-between space-x-4">
+            <p>7. If total totalAccounts > 5 and loanTypeCount = 2</p>
+            <div class="px-2 text-center bg-red-200 rounded border-1">
+              Grade C
+            </div>
+          </div>
+          <div class="flex flex-row items-center justify-between space-x-4">
+            <p>8. If total totalAccounts > 0 and loanTypeCount = 1</p>
+            <div class="px-2 text-center bg-purple-200 rounded border-1">
+              Grade D
+            </div>
+          </div>
+          <div class="flex flex-row items-center justify-between space-x-4">
+            <p>9. Else</p>
+            <div class="px-2 text-center bg-yellow-200 rounded border-1">
+              Grade N/A
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-center p-4 text-white bg-black">
+        <p class="text-sm text-center">
+          Copyright@copy 2022. Designed by
+          <a
+            href="https://akanenoekong.vercel.app"
+            target="_blank"
+            class="underline"
+            >Akaneno Godwin Ekong</a
+          >
+          for wallethub QA test 2
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
